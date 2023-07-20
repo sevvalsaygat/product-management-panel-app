@@ -29,4 +29,5 @@ enum ProductType {
   DRINK,
 }
 
-export type { BaseProductType, ClothesProductType, FoodProductType, DrinkProductType, ProductType };
+export type { BaseProductType, ClothesProductType, FoodProductType, DrinkProductType };
+export { ProductType };
