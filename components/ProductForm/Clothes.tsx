@@ -37,7 +37,7 @@ const Clothes = ({}: ClothesPropTypes) => {
           <input
             type="color"
             {...register('color', { required: 'Color cannot be empty.' })}
-            className="placeholder:text-13 placeholder-pink-300 placeholder-opacity-50 flex w-full justify-center items-center border border-gray-300 rounded-md"
+            className="flex w-full justify-center items-center border border-gray-300 rounded-md"
           ></input>
           {errors.color && <span className="text-red-500 text-12">{errors.color?.message as string}</span>}
         </div>
@@ -78,7 +78,7 @@ const Clothes = ({}: ClothesPropTypes) => {
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
-            QUANITY
+            QUANTITY
           </label>
           <input
             type="number"
