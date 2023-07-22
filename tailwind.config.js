@@ -13,7 +13,6 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontSize: {
-        //12px kaç rem
         '12': '0.75rem',
         '10': '0.625rem',
         '13': '0.8125rem',
@@ -22,7 +21,6 @@ module.exports = {
         '20': '1.25rem',
       },
       lineHeight: {
-        //32px kaç rem
         '32': '2rem',
       },
       colors: {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ProductForm } from '@components';
-
 import { ProductType } from '@types';
 
 type FormScreenPropTypes = {

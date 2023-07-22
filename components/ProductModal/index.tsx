@@ -2,9 +2,9 @@ import { Fragment, useState } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 
+import { ProductType } from '@types';
 import OptionsScreen from './OptionsScreen';
 import FormScreen from './FormScreen';
-import { ProductType } from '@types';
 
 type ProductModalPropTypes = {
   isOpen: boolean;
