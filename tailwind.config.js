@@ -24,6 +24,11 @@ module.exports = {
       lineHeight: {
         //32px kaç rem
         '32': '2rem',
+      },
+      colors: {
+        pink: {
+          100: '#fffcfe',
+        }
       }
     },
   },
