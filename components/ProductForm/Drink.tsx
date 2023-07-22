@@ -37,7 +37,8 @@ const Drink = ({}: DrinkPropTypes) => {
           <input
             type="text"
             {...register('brand', { required: 'Brand cannot be empty.' })}
-            className="placeholder:text-13 placeholder-pink-300 placeholder-opacity-50 flex w-full justify-center items-center border border-gray-300 rounded-md"
+            placeholder="Enter product brand"
+            className="placeholder:text-13 placeholder-pink-300 placeholder-opacity-50 flex w-full p-2 justify-center items-center border border-gray-300 rounded-md"
           ></input>
           {errors.brand && <span className="text-red-500 text-12">{errors.brand?.message as string}</span>}
         </div>
@@ -78,7 +79,7 @@ const Drink = ({}: DrinkPropTypes) => {
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
-            QUANITY
+            QUANTITY
           </label>
           <input
             type="number"
