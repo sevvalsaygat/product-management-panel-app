@@ -8,8 +8,9 @@ type OptionsScreenPropTypes = {
 
 const OptionsScreen = ({ onSelectedOption }: OptionsScreenPropTypes) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-10">
       <button
+        className="border p-1 rounded-md hover:bg-gray-100 font-mono text-15 leading-32 text-gray-700"
         onClick={() => {
           onSelectedOption(ProductType.CLOTHES);
         }}
@@ -17,6 +18,7 @@ const OptionsScreen = ({ onSelectedOption }: OptionsScreenPropTypes) => {
         Clothes
       </button>
       <button
+        className="border p-1 rounded-md hover:bg-gray-100 font-mono text-15 leading-32 text-gray-700"
         onClick={() => {
           onSelectedOption(ProductType.FOOD);
         }}
@@ -24,6 +26,7 @@ const OptionsScreen = ({ onSelectedOption }: OptionsScreenPropTypes) => {
         Food
       </button>
       <button
+        className="border p-1 rounded-md hover:bg-gray-100 font-mono text-15 leading-32 text-gray-700"
         onClick={() => {
           onSelectedOption(ProductType.DRINK);
         }}
