@@ -1,8 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
+import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 
 type ClothesPropTypes = {};
 
 const Clothes = ({}: ClothesPropTypes) => {
+  const [imageBase64, setImageBase64] = useState('');
+
+  const handleFileInputChange = (event: any) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImageBase64(reader.result as string);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -53,15 +71,17 @@ const Clothes = ({}: ClothesPropTypes) => {
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
-            PHOTO
+            FOTOĞRAF
           </label>
           <input
-            type=""
-            {...register('photo', { required: 'Photo cannot be empty.' })}
-            placeholder="Enter product photo"
+            type="file"
+            onChange={handleFileInputChange}
+            placeholder="Ürün fotoğrafını girin"
             className="placeholder:text-13 placeholder-pink-300 placeholder-opacity-50 flex w-full p-2 justify-center items-center border border-gray-300 rounded-md"
           ></input>
           {errors.photo && <span className="text-red-500 text-12">{errors.photo?.message as string}</span>}
+
+          {imageBase64 && <img src={imageBase64} alt={Image.name} />}
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
