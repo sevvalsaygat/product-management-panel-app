@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { useForm } from 'react-hook-form';
 
+import { useProducts } from '@hooks';
 import { Form } from '@components';
+import { ClothesProductType, ProductType } from '@types';
 
 type ClothesPropTypes = {};
 
@@ -23,7 +25,19 @@ const Clothes = ({}: ClothesPropTypes) => {
     formState: { errors },
   } = useForm<FormTypes>();
 
-  const onSubmit = (data: FormTypes) => {};
+  const { createProduct } = useProducts();
+
+  const onSubmit = (data: FormTypes) => {
+    createProduct({
+      size: data.size,
+      color: data.color,
+      price: data.price,
+      photo: data.photo,
+      description: data.description,
+      quantity: data.quantity,
+      type: ProductType.CLOTHES,
+    } as ClothesProductType);
+  };
 
   return (
     <div>

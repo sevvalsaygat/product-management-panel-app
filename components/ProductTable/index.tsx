@@ -26,6 +26,7 @@ const Table = ({}: TablePropTypes) => {
             </th>
           </tr>
         </thead>
+        <tbody></tbody>
       </table>
     </div>
   );
