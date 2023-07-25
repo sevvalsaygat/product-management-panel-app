@@ -4,8 +4,8 @@ type BaseProductType = {
   name: string;
   price: number;
   photo: string;
-  descritpion: string;
-  piece: number;
+  description?: string;
+  quantity: number;
 };
 
 type ClothesProductType = {

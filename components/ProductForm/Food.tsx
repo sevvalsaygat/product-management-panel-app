@@ -1,17 +1,43 @@
-import React from 'react';
-
+/* eslint-disable @next/next/no-img-element */
 import { useForm } from 'react-hook-form';
 
+import { useProducts } from '@hooks';
+import { Form } from '@components';
+import { FoodProductType, ProductType } from '@types';
+
 type FoodPropTypes = {};
+
+type FormTypes = {
+  weight: number;
+  brand: string;
+  price: number;
+  photo: string;
+  description?: string;
+  quantity: number;
+};
 
 const Food = ({}: FoodPropTypes) => {
   const {
     register,
     handleSubmit,
+    control,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormTypes>();
 
-  const onSubmit = (data: any) => data;
+  const { createProduct } = useProducts();
+
+  const onSubmit = (data: FormTypes) => {
+    createProduct({
+      weight: data.weight,
+      brand: data.brand,
+      price: data.price,
+      photo: data.photo,
+      description: data.description,
+      quantity: data.quantity,
+      type: ProductType.FOOD,
+    } as FoodProductType);
+  };
 
   return (
     <div>
@@ -56,15 +82,9 @@ const Food = ({}: FoodPropTypes) => {
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
-            PHOTO
+            FOTOĞRAF
           </label>
-          <input
-            type=""
-            {...register('photo', { required: 'Photo cannot be empty.' })}
-            placeholder="Enter product photo"
-            className="placeholder:text-13 placeholder-pink-300 placeholder-opacity-50 flex w-full p-2 justify-center items-center border border-gray-300 rounded-md"
-          ></input>
-          {errors.photo && <span className="text-red-500 text-12">{errors.photo?.message as string}</span>}
+          <Form.FileInput control={control} errors={errors} watch={watch} name="photo" />
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
@@ -90,7 +110,10 @@ const Food = ({}: FoodPropTypes) => {
           {errors.quantity && <span className="text-red-500 text-12">{errors.quantity?.message as string}</span>}
         </div>
         <div className="flex justify-end mt-4">
-          <button className="flex items-center justify-center align-center bg-gradient-to-r from-purple-200 to-pink-300 hover:from-pink-300 hover:to-purple-200 text-pink-500 text-13 border-transparent w-full py-2 font-sans rounded-md">
+          <button
+            type="submit"
+            className="flex items-center justify-center align-center bg-gradient-to-r from-purple-200 to-pink-300 hover:from-pink-300 hover:to-purple-200 text-pink-500 text-13 border-transparent w-full py-2 font-sans rounded-md"
+          >
             FORM
           </button>
         </div>
