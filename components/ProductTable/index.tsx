@@ -1,6 +1,17 @@
-type TablePropTypes = {};
+/* eslint-disable @next/next/no-img-element */
+import { useProducts } from '@hooks';
+import { ClothesProductType, DrinkProductType, FoodProductType, ProductType } from '@/types';
+import ClothesItem from './ClothesItem';
+import DrinkItem from './DrinkItem';
+import FoodItem from './FoodItem';
+
+type TablePropTypes = {
+  products: Array<ClothesProductType>;
+};
 
 const Table = ({}: TablePropTypes) => {
+  const { products } = useProducts();
+
   return (
     <div className="flex justify-center">
       <table className="w-2/3 border">
@@ -26,7 +37,17 @@ const Table = ({}: TablePropTypes) => {
             </th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {products.map((product) => {
+            if (product.type === ProductType.CLOTHES) {
+              return <ClothesItem key={product.id} product={product as ClothesProductType} />;
+            }
+            if (product.type === ProductType.DRINK) {
+              return <DrinkItem key={product.id} product={product as DrinkProductType} />;
+            }
+            return <FoodItem key={product.id} product={product as FoodProductType} />;
+          })}
+        </tbody>
       </table>
     </div>
   );
