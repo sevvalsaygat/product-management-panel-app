@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from 'react';
+import Link from 'next/link';
+
 import { useForm } from 'react-hook-form';
 
 import { useProducts } from '@hooks';
@@ -22,6 +25,7 @@ const Clothes = ({}: ClothesPropTypes) => {
     handleSubmit,
     control,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -37,6 +41,8 @@ const Clothes = ({}: ClothesPropTypes) => {
       quantity: data.quantity,
       type: ProductType.CLOTHES,
     } as ClothesProductType);
+
+    reset();
   };
 
   return (

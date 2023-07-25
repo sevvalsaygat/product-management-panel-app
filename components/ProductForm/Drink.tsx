@@ -22,6 +22,7 @@ const Drink = ({}: DrinkPropTypes) => {
     handleSubmit,
     control,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -37,6 +38,8 @@ const Drink = ({}: DrinkPropTypes) => {
       quantity: data.quantity,
       type: ProductType.DRINK,
     } as DrinkProductType);
+
+    reset();
   };
 
   return (
