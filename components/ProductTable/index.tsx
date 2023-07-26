@@ -1,4 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
+
+import lodash from 'lodash';
 import { Tab } from '@headlessui/react';
 import cn from 'classnames';
 
@@ -14,6 +17,7 @@ type TablePropTypes = {
 };
 
 const Table = ({}: TablePropTypes) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const { products } = useProducts();
 
   const categories: {
@@ -36,10 +40,25 @@ const Table = ({}: TablePropTypes) => {
     }
   });
 
+  useEffect(() => {
+    if (lodash.isEmpty(products)) return;
+
+    const lastProduct = lodash.last(products)!;
+    const lastProductType = lastProduct.type;
+
+    if (lastProductType === ProductType.CLOTHES) {
+      setSelectedIndex(0);
+    } else if (lastProductType === ProductType.DRINK) {
+      setSelectedIndex(1);
+    } else {
+      setSelectedIndex(2);
+    }
+  }, [products]);
+
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-3xl py-16 sm:px-0">
-        <Tab.Group>
+        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
             {Object.keys(categories).map((category) => (
               <Tab
