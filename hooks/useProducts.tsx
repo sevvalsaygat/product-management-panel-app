@@ -1,7 +1,9 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
+import Cookies from 'js-cookie';
 import { nanoid } from 'nanoid';
 
+import { STORAGE_KEYS } from '@constants';
 import { ClothesProductType, FoodProductType, DrinkProductType } from '@types';
 
 type UseProductsReturnTypes = {
@@ -12,11 +14,18 @@ type UseProductsReturnTypes = {
 const ProductsContext = createContext<UseProductsReturnTypes>({} as UseProductsReturnTypes);
 
 export const ProductsProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [products, setProducts] = useState<Array<ClothesProductType | FoodProductType | DrinkProductType>>([]);
+  const localProducts = window.localStorage.getItem(STORAGE_KEYS.PRODUCTS);
+  const initialProducts = localProducts ? JSON.parse(localProducts) : [];
+  const [products, setProducts] =
+    useState<Array<ClothesProductType | FoodProductType | DrinkProductType>>(initialProducts);
 
   function createProduct(product: ClothesProductType | FoodProductType | DrinkProductType) {
     setProducts([...products, { ...product, id: nanoid() }]);
   }
+
+  useEffect(() => {
+    window.localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
+  }, [products]);
 
   return (
     <ProductsContext.Provider

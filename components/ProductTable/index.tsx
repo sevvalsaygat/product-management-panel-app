@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { Tab } from '@headlessui/react';
 
+import cn from 'classnames';
+
 import { useProducts } from '@hooks';
 import { ClothesProductType, DrinkProductType, FoodProductType, ProductType } from '@/types';
 import ClothesItem from './ClothesItem';
@@ -13,10 +15,6 @@ type TablePropTypes = {
 
 const Table = ({}: TablePropTypes) => {
   const { products } = useProducts();
-
-  function classNames(...products: any[]) {
-    return products.filter(Boolean).join(' ');
-  }
 
   const categories: {
     CLOTHES: ClothesProductType[];
@@ -47,10 +45,12 @@ const Table = ({}: TablePropTypes) => {
               <Tab
                 key={category}
                 className={({ selected }) =>
-                  classNames(
-                    'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700',
-                    'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
-                    selected ? 'bg-white shadow' : 'text-blue-100 hover:bg-white/[0.12] hover:text-white',
+                  cn(
+                    'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                    {
+                      'bg-white shadow': selected,
+                      'text-blue-100 hover:bg-white/[0.12] hover:text-white': !selected,
+                    },
                   )
                 }
               >
@@ -62,10 +62,7 @@ const Table = ({}: TablePropTypes) => {
             {Object.values(categories).map((category, idx) => (
               <Tab.Panel
                 key={idx}
-                className={classNames(
-                  'rounded-xl bg-white p-3',
-                  'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
-                )}
+                className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
               >
                 <table className="max-w-3xl w-full border">
                   <thead className="text-xs text-gray-700 bg-gray-200 dark:text-gray-700">
