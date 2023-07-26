@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { Tab } from '@headlessui/react';
-
 import cn from 'classnames';
 
 import { useProducts } from '@hooks';
-import { ClothesProductType, DrinkProductType, FoodProductType, ProductType } from '@/types';
+import { ClothesProductType, DrinkProductType, FoodProductType, ProductType } from '@types';
+
 import ClothesItem from './ClothesItem';
 import DrinkItem from './DrinkItem';
 import FoodItem from './FoodItem';

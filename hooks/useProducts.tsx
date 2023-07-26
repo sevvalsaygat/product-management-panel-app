@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-import Cookies from 'js-cookie';
 import { nanoid } from 'nanoid';
 
 import { STORAGE_KEYS } from '@constants';
