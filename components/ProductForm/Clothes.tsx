@@ -5,7 +5,9 @@ import { useProducts } from '@hooks';
 import { Form } from '@components';
 import { ClothesProductType, ProductType } from '@types';
 
-type ClothesPropTypes = {};
+type ClothesPropTypes = {
+  closeModal: () => void;
+};
 
 type FormTypes = {
   size: string;
@@ -16,13 +18,14 @@ type FormTypes = {
   quantity: number;
 };
 
-const Clothes = ({}: ClothesPropTypes) => {
+const Clothes = ({ closeModal }: ClothesPropTypes) => {
   const {
     register,
     handleSubmit,
     control,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -40,6 +43,7 @@ const Clothes = ({}: ClothesPropTypes) => {
     } as ClothesProductType);
 
     reset();
+    closeModal();
   };
 
   return (
@@ -86,7 +90,7 @@ const Clothes = ({}: ClothesPropTypes) => {
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
             FOTOĞRAF
           </label>
-          <Form.FileInput control={control} errors={errors} watch={watch} name="photo" />
+          <Form.FileInput control={control} errors={errors} watch={watch} setValue={setValue} name="photo" />
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">

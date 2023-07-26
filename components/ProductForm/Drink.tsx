@@ -5,7 +5,9 @@ import { useProducts } from '@hooks';
 import { Form } from '@components';
 import { DrinkProductType, ProductType } from '@types';
 
-type DrinkPropTypes = {};
+type DrinkPropTypes = {
+  closeModal: () => void;
+};
 
 type FormTypes = {
   liter: number;
@@ -16,13 +18,14 @@ type FormTypes = {
   quantity: number;
 };
 
-const Drink = ({}: DrinkPropTypes) => {
+const Drink = ({ closeModal }: DrinkPropTypes) => {
   const {
     register,
     handleSubmit,
     control,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -40,6 +43,7 @@ const Drink = ({}: DrinkPropTypes) => {
     } as DrinkProductType);
 
     reset();
+    closeModal();
   };
 
   return (
@@ -87,7 +91,7 @@ const Drink = ({}: DrinkPropTypes) => {
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
             FOTOĞRAF
           </label>
-          <Form.FileInput control={control} errors={errors} watch={watch} name="photo" />
+          <Form.FileInput setValue={setValue} control={control} errors={errors} watch={watch} name="photo" />
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">

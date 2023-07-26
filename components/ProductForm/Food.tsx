@@ -5,7 +5,9 @@ import { useProducts } from '@hooks';
 import { Form } from '@components';
 import { FoodProductType, ProductType } from '@types';
 
-type FoodPropTypes = {};
+type FoodPropTypes = {
+  closeModal: () => void;
+};
 
 type FormTypes = {
   weight: number;
@@ -16,13 +18,14 @@ type FormTypes = {
   quantity: number;
 };
 
-const Food = ({}: FoodPropTypes) => {
+const Food = ({ closeModal }: FoodPropTypes) => {
   const {
     register,
     handleSubmit,
     control,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -40,6 +43,7 @@ const Food = ({}: FoodPropTypes) => {
     } as FoodProductType);
 
     reset();
+    closeModal();
   };
 
   return (
@@ -87,7 +91,7 @@ const Food = ({}: FoodPropTypes) => {
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
             FOTOĞRAF
           </label>
-          <Form.FileInput control={control} errors={errors} watch={watch} name="photo" />
+          <Form.FileInput setValue={setValue} control={control} errors={errors} watch={watch} name="photo" />
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
