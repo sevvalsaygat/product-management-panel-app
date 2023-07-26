@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { Control, Controller, FieldErrors, UseFormSetValue, UseFormWatch } from 'react-hook-form';
-
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 type FileInputPropTypes = {
