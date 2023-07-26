@@ -22,6 +22,7 @@ const Clothes = ({}: ClothesPropTypes) => {
     handleSubmit,
     control,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -37,6 +38,8 @@ const Clothes = ({}: ClothesPropTypes) => {
       quantity: data.quantity,
       type: ProductType.CLOTHES,
     } as ClothesProductType);
+
+    reset();
   };
 
   return (

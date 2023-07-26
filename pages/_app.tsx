@@ -1,7 +1,13 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 
-import { ProductsProvider } from '@hooks/useProducts';
+const ProductsProvider = dynamic(
+  () => {
+    return import('@hooks/useProducts').then((mod) => mod.ProductsProvider);
+  },
+  { ssr: false },
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
