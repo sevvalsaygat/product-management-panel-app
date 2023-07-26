@@ -25,6 +25,7 @@ const Food = ({ closeModal }: FoodPropTypes) => {
     control,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormTypes>();
 
@@ -90,7 +91,7 @@ const Food = ({ closeModal }: FoodPropTypes) => {
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
             FOTOĞRAF
           </label>
-          <Form.FileInput control={control} errors={errors} watch={watch} name="photo" />
+          <Form.FileInput setValue={setValue} control={control} errors={errors} watch={watch} name="photo" />
         </div>
         <div>
           <label className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 text-15 leading-32">
