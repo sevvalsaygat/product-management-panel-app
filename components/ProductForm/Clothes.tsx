@@ -5,7 +5,9 @@ import { useProducts } from '@hooks';
 import { Form } from '@components';
 import { ClothesProductType, ProductType } from '@types';
 
-type ClothesPropTypes = {};
+type ClothesPropTypes = {
+  closeModal: () => void;
+};
 
 type FormTypes = {
   size: string;
@@ -16,7 +18,7 @@ type FormTypes = {
   quantity: number;
 };
 
-const Clothes = ({}: ClothesPropTypes) => {
+const Clothes = ({ closeModal }: ClothesPropTypes) => {
   const {
     register,
     handleSubmit,
@@ -40,6 +42,7 @@ const Clothes = ({}: ClothesPropTypes) => {
     } as ClothesProductType);
 
     reset();
+    closeModal();
   };
 
   return (

@@ -5,18 +5,19 @@ import { ProductType } from '@types';
 
 type FormScreenPropTypes = {
   productType: ProductType;
+  closeModal: () => void;
 };
 
-const FormScreen = ({ productType }: FormScreenPropTypes) => {
+const FormScreen = ({ productType, closeModal }: FormScreenPropTypes) => {
   if (productType === ProductType.CLOTHES) {
-    return <ProductForm.Clothes />;
+    return <ProductForm.Clothes closeModal={closeModal} />;
   }
 
   if (productType === ProductType.DRINK) {
-    return <ProductForm.Drink />;
+    return <ProductForm.Drink closeModal={closeModal} />;
   }
 
-  return <ProductForm.Food />;
+  return <ProductForm.Food closeModal={closeModal} />;
 };
 
 export default FormScreen;

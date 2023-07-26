@@ -63,7 +63,7 @@ const ProductModal = ({ isOpen, closeModal }: ProductModalPropTypes) => {
                   {activeScreen === 0 ? (
                     <OptionsScreen onSelectedOption={onSelectedOption} />
                   ) : (
-                    <FormScreen productType={productType!!} />
+                    <FormScreen productType={productType!!} closeModal={closeModal} />
                   )}
                 </div>
               </Dialog.Panel>

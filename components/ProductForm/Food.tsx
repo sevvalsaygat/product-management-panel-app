@@ -5,7 +5,9 @@ import { useProducts } from '@hooks';
 import { Form } from '@components';
 import { FoodProductType, ProductType } from '@types';
 
-type FoodPropTypes = {};
+type FoodPropTypes = {
+  closeModal: () => void;
+};
 
 type FormTypes = {
   weight: number;
@@ -16,7 +18,7 @@ type FormTypes = {
   quantity: number;
 };
 
-const Food = ({}: FoodPropTypes) => {
+const Food = ({ closeModal }: FoodPropTypes) => {
   const {
     register,
     handleSubmit,
@@ -40,6 +42,7 @@ const Food = ({}: FoodPropTypes) => {
     } as FoodProductType);
 
     reset();
+    closeModal();
   };
 
   return (
