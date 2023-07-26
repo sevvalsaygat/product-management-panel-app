@@ -86,7 +86,7 @@ const Table = ({}: TablePropTypes) => {
                             WEIGHT
                           </th>
                           <th scope="col" className="px-6 py-3">
-                            BRAND {/* Eklediğimiz sütun */}
+                            BRAND
                           </th>
                         </>
                       )}
@@ -96,7 +96,7 @@ const Table = ({}: TablePropTypes) => {
                             LITER
                           </th>
                           <th scope="col" className="px-6 py-3">
-                            BRAND {/* Eklediğimiz sütun */}
+                            BRAND
                           </th>
                         </>
                       )}

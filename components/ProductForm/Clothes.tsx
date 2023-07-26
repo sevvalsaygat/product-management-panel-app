@@ -1,7 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
-import Link from 'next/link';
-
 import { useForm } from 'react-hook-form';
 
 import { useProducts } from '@hooks';
