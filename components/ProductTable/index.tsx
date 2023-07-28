@@ -83,8 +83,8 @@ const Table = ({}: TablePropTypes) => {
                 key={idx}
                 className="rounded-xl bg-white p-3 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
               >
-                <table className="max-w-3xl w-full border">
-                  <thead className="text-xs text-gray-700 bg-gray-200 dark:text-gray-700">
+                <table className="max-w-3xl w-full border border-blue-100">
+                  <thead className="text-xs text-gray-700 bg-blue-50 dark:text-blue-800">
                     <tr>
                       {category[0]?.type === ProductType.CLOTHES && (
                         <>

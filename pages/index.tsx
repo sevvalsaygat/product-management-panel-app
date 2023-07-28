@@ -20,12 +20,12 @@ export default function Home() {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md w-fit bg-black bg-opacity-30 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          className="rounded-md w-fit px-4 py-2 text-sm font-medium text-blue-500 text-13 bg-gradient-to-r from-blue-200 to-blue-300 hover:text-blue-700"
         >
           Create Product
         </button>
       </div>
-      <ProductTable />
+      <ProductTable products={[]} />
     </div>
   );
 }
