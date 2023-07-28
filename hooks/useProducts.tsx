@@ -8,6 +8,7 @@ import { ClothesProductType, FoodProductType, DrinkProductType } from '@types';
 type UseProductsReturnTypes = {
   products: Array<ClothesProductType | FoodProductType | DrinkProductType>;
   createProduct: (product: ClothesProductType | FoodProductType | DrinkProductType) => void;
+  clearAllProducts: () => void;
 };
 
 const ProductsContext = createContext<UseProductsReturnTypes>({} as UseProductsReturnTypes);
@@ -22,6 +23,10 @@ export const ProductsProvider: React.FC<React.PropsWithChildren> = ({ children }
     setProducts([...products, { ...product, id: nanoid() }]);
   }
 
+  function clearAllProducts() {
+    setProducts([]);
+  }
+
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
   }, [products]);
@@ -31,6 +36,7 @@ export const ProductsProvider: React.FC<React.PropsWithChildren> = ({ children }
       value={{
         products,
         createProduct,
+        clearAllProducts,
       }}
     >
       {children}

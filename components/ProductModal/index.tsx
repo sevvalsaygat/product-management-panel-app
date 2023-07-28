@@ -20,18 +20,16 @@ const ProductModal = ({ isOpen, closeModal }: ProductModalPropTypes) => {
     setActiveScreen(1);
   }
 
+  function onCloseModal() {
+    closeModal();
+    setTimeout(() => {
+      setActiveScreen(0);
+    }, 400);
+  }
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => {
-          closeModal();
-          setTimeout(() => {
-            setActiveScreen(0);
-          }, 400);
-        }}
-      >
+      <Dialog as="div" className="relative z-10" onClose={onCloseModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -63,7 +61,7 @@ const ProductModal = ({ isOpen, closeModal }: ProductModalPropTypes) => {
                   {activeScreen === 0 ? (
                     <OptionsScreen onSelectedOption={onSelectedOption} />
                   ) : (
-                    <FormScreen productType={productType!!} closeModal={closeModal} />
+                    <FormScreen productType={productType!!} closeModal={onCloseModal} />
                   )}
                 </div>
               </Dialog.Panel>
